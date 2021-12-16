@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled , {css} from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const colors = {
@@ -24,6 +24,10 @@ const Label = styled.label`
     padding: 10px;
     min-height: 40px;
     cursor: pointer;
+
+    ${props = props.valido === 'false' && css`
+        color: ${colors.error};
+    `}
 `;
 
 const GrupoInput = styled.div`
@@ -46,13 +50,29 @@ const Input = styled.input`
         outline: none;
         box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
     }
+
+    ${props => props.valido === 'true' && css`
+        border: 3px solid transparent;
+    `}
+
+    ${props => props.valido === 'false' && css`
+        border: 3px solid ${colors.error} !important;
+    `}
 `;
 
 const Error = styled.p`
     font-size: 12px;
     margin-botton: 0;
     color: ${colors.error};
-    /*display: none; */
+    display: none;
+
+    ${props => props.valido === 'true' && css`
+        display: none;
+    `}
+
+    ${props => props.valido === 'false' && css`
+        display: block;
+    `}
 `;
 
 const IconValidacion = styled(FontAwesomeIcon)`
@@ -62,6 +82,16 @@ const IconValidacion = styled(FontAwesomeIcon)`
     z-index: 100;
     font-size: 16px;
     opacity: 0; 
+
+    ${props => props.valido === 'false' && css`
+        opacity: 1;
+        color: ${colors.error}; 
+    `}
+
+    ${props => props.valido === 'true' && css`
+        opacity: 1;
+        color: ${colors.success}; 
+    `}
 `;
 
 const ContainerTerms = styled.div`
