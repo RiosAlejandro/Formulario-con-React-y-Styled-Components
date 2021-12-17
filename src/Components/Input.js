@@ -1,8 +1,8 @@
 import React from 'react';
-import { Label, GrupoInput, Error, IconValidacion, Input } from './Elements/Formulario';
+import { Label, GrupoInput, Error, IconValidacion, Input } from './../Elements/Formulario';
 import { faCheckCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 
-const ComponentInput = ({label, placeholder, type, name, leyendaError, exprecionRegular, state, changeState}) => {
+const ComponentInput = ({label, placeholder, type, name, leyendaError, exprecionRegular, state, changeState, funcion}) => {
    
     const onchange = (e) =>{
         changeState({ ...state, campo: e.target.value});
@@ -15,6 +15,10 @@ const ComponentInput = ({label, placeholder, type, name, leyendaError, exprecion
             }else{
                 changeState({ ...state, valido:'false' });
             }
+        }
+
+        if(funcion){
+            funcion();
         }
     };
    

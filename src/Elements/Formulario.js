@@ -1,4 +1,3 @@
-import React from 'react';
 import styled , {css} from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -25,7 +24,7 @@ const Label = styled.label`
     min-height: 40px;
     cursor: pointer;
 
-    ${props = props.valido === 'false' && css`
+    ${props => props.valido === 'false' && css`
         color: ${colors.error};
     `}
 `;
@@ -100,6 +99,10 @@ const ContainerTerms = styled.div`
     input {
         margin-right: 10px;
     }
+
+    @media(max-width: 800px){
+        grid-column: span 1;
+    }
 `;
 
 const ContainerButtonCenter = styled.div`
@@ -107,6 +110,10 @@ const ContainerButtonCenter = styled.div`
     flex-direction: column;
     align-items: center;
     grid-column: span 2;
+
+    @media(max-width: 800px){
+        grid-column: span 1;
+    }
 `;
 
 const Button = styled.button`
@@ -129,7 +136,6 @@ const Button = styled.button`
 const MessageSuccess = styled.p`
     font-size: 14px;
     color: ${colors.success};
-    display: none;
 `;
 
 const MessageError = styled.div`
